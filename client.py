@@ -6,7 +6,7 @@ import picamera
 import configparser
 
 config = configparser.ConfigParser()
-config = config.read('./config.ini')
+config.read('./config.ini')
 
 IP = str(config['DEFAULT']['IP'])
 PORT = int(config['DEFAULT']['Port'])

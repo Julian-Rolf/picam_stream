@@ -6,7 +6,7 @@ import configparser
 import cv2
 
 config = configparser.ConfigParser()
-config = config.read('./config.ini')
+config.read('./config.ini')
 
 PORT = int(config['DEFAULT']['Port'])
 WIDTH = int(config['CAMERA']['Width'])
