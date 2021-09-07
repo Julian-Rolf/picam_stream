@@ -4,11 +4,12 @@ import struct
 from PIL import Image
 import configparser
 import cv2
+import numpy as np
 
 config = configparser.ConfigParser()
 config.read('../config.ini')
 
-IP = int(config['DEFAULT']['IP'])
+IP = str(config['DEFAULT']['IP'])
 PORT = int(config['DEFAULT']['Port'])
 WIDTH = int(config['CAMERA']['Width'])
 HEIGHT = int(config['CAMERA']['Height'])
@@ -36,7 +37,7 @@ try:
         image = Image.open(image_stream)
         
         cv2.imshow('image', np.array(image))
-        cv2.waitkey(1)
+        cv2.waitKey(1)
 
 finally:
     connection.close()
