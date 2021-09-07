@@ -6,7 +6,7 @@ import picamera
 import configparser
 
 config = configparser.ConfigParser()
-config.read('./config.ini')
+config.read('../config.ini')
 
 IP = str(config['DEFAULT']['IP'])
 PORT = int(config['DEFAULT']['Port'])
@@ -32,17 +32,13 @@ try:
 
         # Use the video-port for captures...
         for foo in camera.capture_continuous(stream, 'rgb'):
-            connection.write(struct.pack('<I', stream.tell()))
-            connection.flush()
-            stream.seek(0)
             connection.write(stream.read())
+            connection.flush()
             if time.time() - start > CAPTURE_TIME:
                 break
             # reset stream
             stream.seek(0)
             stream.truncate()
-    # finish flag
-    connection.write(struct.pack('<L', 0))
 finally:
     connection.close()
     client_socket.close()

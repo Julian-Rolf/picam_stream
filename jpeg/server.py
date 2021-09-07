@@ -6,7 +6,7 @@ import configparser
 import cv2
 
 config = configparser.ConfigParser()
-config.read('./config.ini')
+config.read('../config.ini')
 
 IP = int(config['DEFAULT']['IP'])
 PORT = int(config['DEFAULT']['Port'])
@@ -23,7 +23,7 @@ try:
     while True:
         # Read the length of the image as a 32-bit unsigned int. If the
         # length is zero, quit the loop
-        image_len = struct.unpack('<I', connection.read(struct.calcsize('<I')))[0]
+        image_len = struct.unpack('<L', connection.read(struct.calcsize('<L')))[0]
         if not image_len:
             break
         # Construct a stream to hold the image data and read the image
