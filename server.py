@@ -8,6 +8,7 @@ import cv2
 config = configparser.ConfigParser()
 config.read('./config.ini')
 
+IP = int(config['DEFAULT']['IP'])
 PORT = int(config['DEFAULT']['Port'])
 WIDTH = int(config['CAMERA']['Width'])
 HEIGHT = int(config['CAMERA']['Height'])
